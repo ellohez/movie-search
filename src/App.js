@@ -1,5 +1,5 @@
 import './App.css';
-import MovieInfo from './Components/FilmRequest';
+import MovieInfo from './Components/MovieInfo';
 import SearchForm from './Components/SearchForm';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <SearchForm />
-        <MovieInfo />
+        {/* <MovieInfo /> */}
       </header>
     </div>
   );

@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CardComponent from "./CardComponent";
 
-const MovieInfo = () => {
+const MovieInfo = (title) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
+    const [movie, setMovie] = useState([]);
 
-    const [apiKey, setApiKey] = useState("");
-    const [filmTitle, setFilmTitle] = useState("");
+    // TODO
+    // const [apiKey, setApiKey] = useState("");
+    // const filmTitle = useState(filmTitle);
 
     const key = '5e808af1';
     const baseUrl = 'http://www.omdbapi.com/?apikey='
@@ -17,13 +18,12 @@ const MovieInfo = () => {
     // means it will run once on mount.
     useEffect(() => {
         console.log(`${baseUrl}${key}&t=deadpool`)
-        // TODO - useState variables and split out the /t= option part of the request
-        axios.get(`${baseUrl}${key}&t=leon`)
-        // axios.get('https://www.omdbapi.com/?i=tt3896198&apikey=5e808af1')
+        // TODO - use prop variable and split out the /t= option part of the request
+        axios.get(`${baseUrl}${key}&t=deadpool`)
         .then((res) => res)
         .then((result) => {
             setIsLoaded(true);
-            setItems(result.data.data);
+            setMovie(result.data);
         }, 
         (error) => {
             setIsLoaded(true);
@@ -44,8 +44,8 @@ const MovieInfo = () => {
     else {
         return (
             <ul>
-                <CardComponent />
-                {console.log(items)}
+                <CardComponent value={movie}/>
+                {console.log({movie})}
             </ul>
         );
     }
