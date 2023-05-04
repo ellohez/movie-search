@@ -1,18 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import CardComponent from "./CardComponent";
 
 const MovieInfo = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
 
+    const [apiKey, setApiKey] = useState("");
+    const [filmTitle, setFilmTitle] = useState("");
+
     const key = '5e808af1';
     const baseUrl = 'http://www.omdbapi.com/?apikey='
+    
     // Note: the empty deps array (dependency list) at the end of useEffect
     // means it will run once on mount.
     useEffect(() => {
-        console.log(`${baseUrl}${key}&t=leon`)
-        // TODO - split out the /t= option part of the request
+        console.log(`${baseUrl}${key}&t=deadpool`)
+        // TODO - useState variables and split out the /t= option part of the request
         axios.get(`${baseUrl}${key}&t=leon`)
         // axios.get('https://www.omdbapi.com/?i=tt3896198&apikey=5e808af1')
         .then((res) => res)
@@ -39,6 +44,7 @@ const MovieInfo = () => {
     else {
         return (
             <ul>
+                <CardComponent />
                 {console.log(items)}
             </ul>
         );
