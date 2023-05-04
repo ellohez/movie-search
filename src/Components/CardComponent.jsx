@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap';
 
-const CardComponent = ({Title, Poster, Plot}) => {
+const CardComponent = (props) => {
 
     return (
         <>
@@ -9,17 +9,18 @@ const CardComponent = ({Title, Poster, Plot}) => {
     additional content. */}
             <Card className="my-2">
                 <CardImg alt="Card image cap"
-                    // src="https://picsum.photos/900/180"
-                    src={Poster}
+                    src="https://picsum.photos/900/180"
+                    // src={props.movie.Poster}
                     style={{
                     height: 180}} top width="100%"
                 />
                 <CardBody>
                     <CardTitle tag="h5">
-                       {Title}
+                      Title here {/* {Title} */}
                     </CardTitle>
                     <CardText>
-                        {Plot}
+                        {/* {Plot} */}
+                        props.movie.Plot
                     </CardText>
                     <CardText>
                         <small className="text-muted">

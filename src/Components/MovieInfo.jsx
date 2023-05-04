@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CardComponent from "./CardComponent";
 
-const MovieInfo = (title) => {
+const MovieInfo = (props) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [movie, setMovie] = useState([]);
@@ -10,6 +10,7 @@ const MovieInfo = (title) => {
     // TODO
     // const [apiKey, setApiKey] = useState("");
     // const filmTitle = useState(filmTitle);
+    console.log(props.filmTitle);
 
     const key = '5e808af1';
     const baseUrl = 'http://www.omdbapi.com/?apikey='
@@ -44,7 +45,7 @@ const MovieInfo = (title) => {
     else {
         return (
             <ul>
-                <CardComponent value={movie}/>
+                <CardComponent filmInfo={movie}/>
                 {console.log({movie})}
             </ul>
         );
