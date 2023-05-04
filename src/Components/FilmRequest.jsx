@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const MovieInfo = () => {
     const [error, setError] = useState(null);
@@ -11,8 +11,10 @@ const MovieInfo = () => {
     // Note: the empty deps array (dependency list) at the end of useEffect
     // means it will run once on mount.
     useEffect(() => {
+        console.log(`${baseUrl}${key}&t=leon`)
         // TODO - split out the /t= option part of the request
-        axios.get(`${baseUrl}${key}?t=`)
+        axios.get(`${baseUrl}${key}&t=leon`)
+        // axios.get('https://www.omdbapi.com/?i=tt3896198&apikey=5e808af1')
         .then((res) => res)
         .then((result) => {
             setIsLoaded(true);
@@ -42,3 +44,6 @@ const MovieInfo = () => {
         );
     }
 }
+
+
+export default MovieInfo;
