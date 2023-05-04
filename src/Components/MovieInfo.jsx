@@ -10,7 +10,7 @@ const MovieInfo = (props) => {
     // TODO
     // const [apiKey, setApiKey] = useState("");
     // const filmTitle = useState(filmTitle);
-    console.log(props.filmTitle);
+    // console.log(props.title);
 
     const key = '5e808af1';
     const baseUrl = 'http://www.omdbapi.com/?apikey='
