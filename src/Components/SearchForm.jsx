@@ -7,23 +7,23 @@ import CardComponent from "./CardComponent";
 const SearchForm = () => {
     // const [error, setError] = useState(null);
     // const [isLoaded, setIsLoaded] = useState(false);
-    const [movie, setMovie] = useState("");
+    const [movie, setMovie] = useState([]);
     const [filmTitle, setFilmTitle] = useState('Deadpool');
-    const key = '5e808af1';
-    const baseUrl = 'http://www.omdbapi.com/?apikey=';
-    const url = `${baseUrl}${key}&t=deadpool`;
+    const apiKey = 'apikey=5e808af1';
+    const apiUrl = 'http://www.omdbapi.com/?';
+    // TODO - use title from search 
+    const url = `${apiUrl}${apiKey}&s=deadpool&type=movie&page=1`;
     console.log(url);
 
-    const handleClick = (e) => {
-       
-        e.preventDefault();
-        // TODO - load movie info
+    const getMovieInfo = () => {
+        debugger;
         axios.get(url)
-        .then((response) => {
-            if(response.data.Response === "True") {
+        .then((res) => {
+            if(res) {
                 // setIsLoaded(true);
-                console.log(response.data)
-                setMovie(response.data);
+                console.log(res.data)
+                // TODO - fix disconnected port error
+                // setMovie(res.data.Search);
             } else {
                 // (error) => {
                 // setIsLoaded(true);
@@ -31,13 +31,21 @@ const SearchForm = () => {
                 // setError(error);
                 console.log("Movie not found")
             }
+        })
+        .catch(function (error) {
+            console.log(error);
         });
+    };
+
+    const handleClick = (e) => {
+       console.log(e.target);
+        e.preventDefault();
+        getMovieInfo();
     }
 
     return (
         <div style={{padding: "10px"}}>
-        <h1>{movie.Title}</h1>
-            <Form onSubmit={() => handleClick()}>
+            <Form onSubmit={(e) => handleClick(e)}>
                 <InputGroup>
                     <InputGroupText>Movie Title</InputGroupText>
                     <Input value={filmTitle} onChange={(e) => setFilmTitle(e.target.value)}/>

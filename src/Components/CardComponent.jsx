@@ -20,11 +20,11 @@ const CardComponent = (props) => {
                 />
                 <CardBody>
                     <CardTitle tag="h5">
-                      {/* {Title} */}
-                      <p>TITLE</p>
+                      {Title}
+                      {/* <p>TITLE</p> */}
                     </CardTitle>
                     <CardText>
-                        {/* {Plot} */}
+                        {Plot}
                         {/* props.filmInfo.Plot */}
                     </CardText>
                     <CardText>

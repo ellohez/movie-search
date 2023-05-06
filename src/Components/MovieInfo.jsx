@@ -42,3 +42,17 @@
 
 
 // export default MovieInfo;
+
+// axios.get(url)
+// .then((response) => {
+//     if(response.data.Response === "True") {
+//         // setIsLoaded(true);
+//         console.log(response.data)
+//         setMovie(response.data);
+//     } else {
+//         // (error) => {
+//         // setIsLoaded(true);
+//         // TODO - is loading on screen?
+//         // setError(error);
+//         console.log("Movie not found")
+//     }
