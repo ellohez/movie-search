@@ -19,16 +19,19 @@ const SearchForm = () => {
         e.preventDefault();
         // TODO - load movie info
         axios.get(url)
-        // .then((res) => res)
-        .then((res) => {
-            // setIsLoaded(true);
-            console.log(res.data)
-            setMovie(res.data);
-        // }, 
-        // (error) => {
-            // setIsLoaded(true);
-            // setError(error);
-        })
+        .then((response) => {
+            if(response.data.Response === "True") {
+                // setIsLoaded(true);
+                console.log(response.data)
+                setMovie(response.data);
+            } else {
+                // (error) => {
+                // setIsLoaded(true);
+                // TODO - is loading on screen?
+                // setError(error);
+                console.log("Movie not found")
+            }
+        });
     }
 
     return (

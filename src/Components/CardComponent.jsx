@@ -5,6 +5,7 @@ const CardComponent = (props) => {
 
     const {Title, Plot, Poster} = props;
     console.log(props);
+    console.log(Title);
 
     return (
         <>
@@ -19,7 +20,8 @@ const CardComponent = (props) => {
                 />
                 <CardBody>
                     <CardTitle tag="h5">
-                      {Title}
+                      {/* {Title} */}
+                      <p>TITLE</p>
                     </CardTitle>
                     <CardText>
                         {/* {Plot} */}
