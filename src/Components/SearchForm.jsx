@@ -7,33 +7,24 @@ import CardComponent from "./CardComponent";
 const SearchForm = () => {
     // const [error, setError] = useState(null);
     // const [isLoaded, setIsLoaded] = useState(false);
-    const [movie, setMovie] = useState([]);
+    const [movie, setMovie] = useState({});
     const [filmTitle, setFilmTitle] = useState('Deadpool');
     const apiKey = 'apikey=5e808af1';
     const apiUrl = 'http://www.omdbapi.com/?';
     // TODO - use title from search 
     const url = `${apiUrl}${apiKey}&s=deadpool&type=movie&page=1`;
-    console.log(url);
+    console.log(url); 
 
     const getMovieInfo = () => {
-        debugger;
-        axios.get(url)
-        .then((res) => {
-            if(res) {
-                // setIsLoaded(true);
-                console.log(res.data)
-                // TODO - fix disconnected port error
-                // setMovie(res.data.Search);
-            } else {
-                // (error) => {
-                // setIsLoaded(true);
-                // TODO - is loading on screen?
-                // setError(error);
-                console.log("Movie not found")
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
+        axios.get("http://www.omdbapi.com/?apikey=64b6f90b&t=" + filmTitle)
+        .then(response => {
+          if (response.data.Response === "True") {
+              console.log(response.data);
+              setMovie(Object.assign({}, response.data));
+          } else {
+              console.log("mnf");
+              response.data.Title = "Movie not found"
+          }
         });
     };
 
@@ -41,6 +32,9 @@ const SearchForm = () => {
        console.log(e.target);
         e.preventDefault();
         getMovieInfo();
+        // debugger;
+        console.log('Movie:' + movie);
+        // console.log(movies[0].Title);
     }
 
     return (
@@ -52,7 +46,8 @@ const SearchForm = () => {
                     <Button type="submit">Search</Button>
                 </InputGroup>
             </Form>
-            <CardComponent filmInfo={movie}/>
+            <CardComponent filmInfo={{movie}}/>
+           {/* <CardComponent filmInfo={{Title: 'Leon', Plot: 'Film blurb....', Poster: 'Poster URL'}} />  */}
         </div>
     )
 }
